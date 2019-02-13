@@ -1,17 +1,30 @@
 'use strict';
 
-angular.module('test')
-    .controller('ListCtrl', function ($scope, test) {
+angular.module('book')
+    .controller('ListCtrl', function ($scope, book) {
 
         $scope.load = function() {
-            test.list(function (list) {
+            book.list(function (list) {
                 $scope.list = list.data;
             });
         }
 
         $scope.save = function() {
-            test.save($scope.form, function() {
+            book.save($scope.form, function() {
+            	$scope.form = {};
                 $scope.load();
+            });
+        }
+        
+        $scope.delete = function(id) {
+            book.delete(id, function() {
+                $scope.load();
+            });
+        }
+        
+        $scope.search = function() {
+            book.search($scope.query, function (list) {
+                $scope.list = list.data;
             });
         }
 

@@ -5,7 +5,11 @@ import com.googlecode.objectify.impl.translate.opt.joda.DateTimeZoneTranslatorFa
 import com.googlecode.objectify.impl.translate.opt.joda.LocalDateTimeTranslatorFactory;
 import com.googlecode.objectify.impl.translate.opt.joda.LocalDateTranslatorFactory;
 import com.googlecode.objectify.impl.translate.opt.joda.ReadableInstantTranslatorFactory;
-import com.test.data.TestBean;
+import com.test.data.BookBean;
+import com.google.appengine.tools.remoteapi.RemoteApiInstaller;
+import com.google.appengine.tools.remoteapi.RemoteApiOptions;
+
+import java.io.IOException;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -15,6 +19,7 @@ import javax.servlet.ServletContextListener;
  */
 public class ObjectifyConfig implements ServletContextListener {
 
+	
     static {
         // Add translators for Joda objects
 
@@ -27,15 +32,16 @@ public class ObjectifyConfig implements ServletContextListener {
         ObjectifyService.factory().getTranslators()
                 .add(new DateTimeZoneTranslatorFactory());
 
-        // TODO: Add and register each data bean here
-        ObjectifyService.register(TestBean.class);
+        ObjectifyService.register(BookBean.class);
     }
 
     @Override
     public void contextInitialized(final ServletContextEvent sce) {
+    	
     }
 
     @Override
     public void contextDestroyed(final ServletContextEvent sce) {
     }
+    
 }
