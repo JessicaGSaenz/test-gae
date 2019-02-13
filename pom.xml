@@ -42,6 +42,7 @@
         <maven.deploy.plugin>2.8.1</maven.deploy.plugin>
         <nexus.staging.maven.plugin>1.4.4</nexus.staging.maven.plugin>
         <swagger.plugin.version>2.2</swagger.plugin.version>
+        
     </properties>
 
     <repositories>

@@ -1,13 +1,25 @@
 'use strict';
 
-angular.module('test')
-    .service('test', function ($http) {
+angular.module('book')
+    .service('book', function ($http) {
         return {
             list: function (success) {
-                return $http.get("/rest/test").then(success);
+            	//return $http.get("/_ah/remote_api/book").then(success);
+                //return $http.get("/rest/book").then(success);
+            	return $http.get("/remote_api/book").then(success);
             },
-            save: function (test, success) {
-                return $http.post("/rest/test", test).then(success);
-            }
+            save: function (book, success) {
+            	//return $http.post("/rest/book", book).then(success);
+                return $http.post("/remote_api/book", book).then(success);
+            }/*,
+            delete: function (id, success) {
+                return $http.delete("/rest/book/"+id).then(success);
+            },
+            get: function (id, success) {
+                return $http.get("/rest/book/"+id).then(success);
+            },
+            search: function (text, success) {
+                return $http.get("/rest/book/search/"+text).then(success);
+            }*/
         };
     });
