@@ -16,6 +16,5 @@
     <instance-class>F1</instance-class>
     
     <runtime>java8</runtime>
-    <threadsafe>true</threadsafe>
     
 </appengine-web-app>
