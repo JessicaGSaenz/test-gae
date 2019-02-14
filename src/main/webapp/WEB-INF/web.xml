@@ -48,15 +48,6 @@
 	  <url-pattern>/remote_api</url-pattern>
 	</servlet-mapping>
     
-   <!--  <servlet>
-	   <servlet-name>BookResource</servlet-name>
-	   <servlet-class>com.test.rest.BookResource</servlet-class>
-	</servlet>
-	<servlet-mapping>
-	   <servlet-name>BookResource</servlet-name>
-	   <url-pattern>/book</url-pattern>
-	</servlet-mapping>  -->
-
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>app</web-resource-name>
