@@ -54,7 +54,8 @@ public class BookResource {
     @ApiOperation("save book object")
     public Response save(BookBean bean) {
        
-    	RemoteApiOptions options = new RemoteApiOptions()
+    	//Conectar con datastore remote
+    	/*RemoteApiOptions options = new RemoteApiOptions()
         	    .server("https://caramel-caster-231015.appspot.com/", 443)
         	    .useApplicationDefaultCredential();
     	
@@ -68,7 +69,7 @@ public class BookResource {
 			
 			e.printStackTrace();
 			
-		}
+		}*/
     	
     	this.bookBeanDAO.save(bean);
         return Response.ok().build();

@@ -48,8 +48,13 @@ public class BookBeanDAO {
         
         LOGGER.info("Saving bean " + bean.getName());
         //ObjectifyService.ofy().save().entity(bean).now();
+        
         DatastoreService db = DatastoreServiceFactory.getDatastoreService();
-        db.put(new Entity("p2", 2007));
+        Entity book = new Entity("Book");
+        book.setProperty("Name", "p2");
+        book.setProperty("Year", 2007);
+        
+        db.put(book);
         
     }
 
