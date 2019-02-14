@@ -14,8 +14,8 @@
     </filter>
     <filter-mapping>
         <filter-name>ObjectifyFilter</filter-name>
-         <url-pattern>/rest/*</url-pattern> 
-        <!--<url-pattern>/remote_api/*</url-pattern>-->
+         <!--<url-pattern>/rest/*</url-pattern> -->
+        <url-pattern>/remote_api/*</url-pattern>
     </filter-mapping>
 
     <servlet>
