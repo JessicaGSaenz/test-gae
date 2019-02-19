@@ -1,8 +1,6 @@
 package com.test.dao;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.search.*;
 import com.googlecode.objectify.ObjectifyService;
 import com.test.data.BookBean;
 
@@ -47,14 +45,22 @@ public class BookBeanDAO {
         }
         
         LOGGER.info("Saving bean " + bean.getName());
-        //ObjectifyService.ofy().save().entity(bean).now();
+        ObjectifyService.ofy().save().entity(bean).now();
         
-        DatastoreService db = DatastoreServiceFactory.getDatastoreService();
-        Entity book = new Entity("Book");
-        book.setProperty("Name", "p2");
-        book.setProperty("Year", 2007);
+       //DatastoreService db = DatastoreServiceFactory.getDatastoreService();
         
-        db.put(book);
+        Document builder = Document.newBuilder()
+                .setId(bean.getId().toString())
+                .addField(Field.newBuilder().setName("name").setText(bean.getName()))
+                .addField(Field.newBuilder().setName("author").setText(bean.getAuthor()))
+                .addField(Field.newBuilder().setName("year").setNumber(bean.getYear()))
+                .addField(Field.newBuilder().setName("genre").setText(bean.getGenre()))
+                .build();
+        
+        IndexSpec indexSpec = IndexSpec.newBuilder().setName("searchIndex").build();
+        Index index = SearchServiceFactory.getSearchService().getIndex(indexSpec);
+
+        index.put(builder);
         
     }
 
